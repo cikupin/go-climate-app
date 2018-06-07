@@ -1,8 +1,6 @@
 package routes
 
 import (
-	"net/http"
-
 	"github.com/cikupin/go-climate-app/controllers"
 	"github.com/cikupin/go-climate-app/interfaces"
 	"github.com/gorilla/mux"
@@ -13,7 +11,7 @@ type Router struct {
 	AjaxController  interfaces.IAjaxController
 }
 
-func (r *Router) Handler() http.Handler {
+func (r *Router) Handler() *mux.Router {
 	r.IndexController = new(controllers.IndexController)
 	r.AjaxController = new(controllers.AjaxController)
 

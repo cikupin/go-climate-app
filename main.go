@@ -8,9 +8,10 @@ import (
 )
 
 func main() {
+	r := new(routes.Router)
 	server := &http.Server{
 		Addr:    ":8080",
-		Handler: routes.Router.Handler()
+		Handler: r.Handler(),
 	}
 
 	log.Println("Listening...")
