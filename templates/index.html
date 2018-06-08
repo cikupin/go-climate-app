@@ -41,7 +41,7 @@ function getClimate(city) {
             template += "<tr><td>" + elem.date + "</td><td>" + elem.daytemp + "C</td><td>" + elem.vartemp + "C</td></tr>";
         });
 
-        template += "<tr><td><b>Average</b></td><td>" + data.average.temp + "C</td><td>" + data.average.var + "C</td></tr>";
+        template += "<tr><td><b>Average</b></td><td><b>" + data.average.temp + "C</b></td><td></b>" + data.average.var + "C</b></td></tr>";
         template += "</table>";
 
         $("#temp-section").empty();
