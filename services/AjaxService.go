@@ -22,11 +22,11 @@ type AjaxService struct {
 }
 
 // GetCityWeather call AjaxRepository.GetOpenWeatherData() to obtain weather from openweathermap.org
-func (r *AjaxService) GetCityWeather(city string) models.WeatherResponse {
+func (r *AjaxService) GetCityWeather(city string, days int) models.WeatherResponse {
 	r.AjaxRepository = new(repositories.AjaxRepository)
 	var cityWeather models.WeatherResponse
 
-	openWeatherData := r.AjaxRepository.GetOpenWeatherData(city)
+	openWeatherData := r.AjaxRepository.GetOpenWeatherData(city, days)
 	cityWeather.City = openWeatherData.City.Name
 
 	var dailyTemp DailyTemperature

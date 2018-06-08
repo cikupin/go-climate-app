@@ -6,5 +6,5 @@ import (
 
 // IAjaxService - interface for AjaxService
 type IAjaxService interface {
-	GetCityWeather(city string) models.WeatherResponse
+	GetCityWeather(city string, days int) models.WeatherResponse
 }

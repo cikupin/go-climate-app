@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"strconv"
 
 	"github.com/cikupin/go-climate-app/models"
 )
@@ -14,11 +15,13 @@ type AjaxRepository struct {
 }
 
 // GetOpenWeatherData obtain weather data from openweathermap.org
-func (r *AjaxRepository) GetOpenWeatherData(city string) models.OpenWeatherResponse {
+func (r *AjaxRepository) GetOpenWeatherData(city string, days int) models.OpenWeatherResponse {
 	var bufferURL bytes.Buffer
 	bufferURL.WriteString("http://api.openweathermap.org/data/2.5/forecast/daily?q=")
 	bufferURL.WriteString(city)
-	bufferURL.WriteString("&mode=json&units=metric&cnt=5&APPID=481e3bc28e5264e5607c2b65b449bfc1")
+	bufferURL.WriteString("&mode=json&units=metric&cnt=")
+	bufferURL.WriteString(strconv.Itoa(days))
+	bufferURL.WriteString("&APPID=481e3bc28e5264e5607c2b65b449bfc1")
 
 	res, err := http.Get(bufferURL.String())
 	if err != nil {

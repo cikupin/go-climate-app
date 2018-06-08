@@ -6,5 +6,5 @@ import (
 
 // IAjaxService - interface for AjaxService
 type IAjaxRepository interface {
-	GetOpenWeatherData(city string) models.OpenWeatherResponse
+	GetOpenWeatherData(city string, days int) models.OpenWeatherResponse
 }
