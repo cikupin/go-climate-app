@@ -7,7 +7,6 @@ import (
 
 	"github.com/cikupin/go-climate-app/interfaces"
 	"github.com/cikupin/go-climate-app/models"
-	"github.com/cikupin/go-climate-app/repositories"
 )
 
 // DailyTemperature struct
@@ -24,7 +23,6 @@ type AjaxService struct {
 
 // GetCityWeather call AjaxRepository.GetOpenWeatherData() to obtain weather from openweathermap.org
 func (r *AjaxService) GetCityWeather(city string, days int) models.WeatherResponse {
-	r.AjaxRepository = new(repositories.AjaxRepository)
 	var cityWeather models.WeatherResponse
 
 	openWeatherData := r.AjaxRepository.GetOpenWeatherData(city, days)

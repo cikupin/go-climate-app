@@ -3,7 +3,6 @@ package routes
 import (
 	"net/http"
 
-	"github.com/cikupin/go-climate-app/controllers"
 	"github.com/cikupin/go-climate-app/interfaces"
 	"github.com/gorilla/mux"
 )
@@ -16,8 +15,8 @@ type Router struct {
 
 // Handler handling application routing
 func (r *Router) Handler() *mux.Router {
-	r.IndexController = new(controllers.IndexController)
-	r.AjaxController = new(controllers.AjaxController)
+	injector := new(DependencyInjector)
+	injector.Inject(r)
 
 	fs := http.FileServer(http.Dir("public"))
 	routes := mux.NewRouter()

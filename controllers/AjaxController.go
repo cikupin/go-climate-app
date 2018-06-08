@@ -6,7 +6,6 @@ import (
 	"strconv"
 
 	"github.com/cikupin/go-climate-app/interfaces"
-	"github.com/cikupin/go-climate-app/services"
 	"github.com/gorilla/mux"
 )
 
@@ -17,7 +16,6 @@ type AjaxController struct {
 
 // GetWeather call AjaxService.GetCityWeather() to get weather of certain city
 func (a *AjaxController) GetWeather(w http.ResponseWriter, r *http.Request) {
-	a.AjaxService = new(services.AjaxService)
 	vars := mux.Vars(r)
 	city := vars["city"]
 	days, err := strconv.Atoi(vars["days"])
