@@ -1,0 +1,56 @@
+{{define "head"}}
+<title>City Climate</title>
+{{end}}
+
+{{define "body"}}
+<div>
+    Select city:
+    <select name="city" id="city">
+        <option value="">-- Select city ---</option>
+        <option value="Jakarta">Jakarta</option>
+        <option value="Tokyo">Tokyo</option>
+        <option value="London">London</option>
+    </select>
+</div>
+
+<br><br>
+<div id="temp-section">
+</div>
+{{end}}
+
+{{define "customscript"}}
+<script>
+$(document).ready(function() {
+    $('#city').change(function() {
+        var city = $(this).val();
+        if (city) {
+            getClimate(city);
+        } else {
+            clearClimate();
+        }
+    });
+});
+
+
+function getClimate(city) {
+    $.getJSON("/get-weather/" + city + "/5", function(data, status) {
+        var template = '<table border="1">';
+        template += "<tr><th>" + data.name + "</th><th>Temperature</th><th>Variance</th><tr>";
+
+        $.each(data.temp, function(idx, elem) {
+            template += "<tr><td>" + elem.date + "</td><td>" + elem.daytemp + "C</td><td>" + elem.vartemp + "C</td></tr>";
+        });
+
+        template += "<tr><td><b>Average</b></td><td>" + data.average.temp + "C</td><td>" + data.average.var + "C</td></tr>";
+        template += "</table>";
+
+        $("#temp-section").empty();
+        $("#temp-section").append(template);
+    });
+}
+
+function clearClimate() {
+    $("#temp-section").empty();
+}
+</script>
+{{end}}

@@ -1,0 +1,16 @@
+{{define "base"}}
+<html>
+
+<head>
+    {{template "head" .}}
+    <style type="text/css">
+        table tr th	{padding: 10px;}
+        table tr td	{padding: 10px;}
+    </style>
+</head>
+<body>{{template "body" .}}</body>
+
+<script src="/public/js/jquery-3.3.1.min.js"></script>
+{{template "customscript" .}}
+</html>
+{{end}}

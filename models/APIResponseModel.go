@@ -24,7 +24,7 @@ type WeatherResponse struct {
 		VarTemp float64 `json:"vartemp"`
 	} `json:"temp"`
 	Average struct {
-		Temp float64 `json:"avgtemp"`
-		Var  float64 `json:"avgvar"`
+		Temp float64 `json:"temp"`
+		Var  float64 `json:"var"`
 	} `json:"average"`
 }
